@@ -1,0 +1,11 @@
+/node_modules/
+/.next/
+/.playwright-mcp/
+/tmp/
+/output/
+*.tsbuildinfo
+*.log
+.env*
+!.env.example
+
+.vercel

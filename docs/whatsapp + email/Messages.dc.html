@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RISE WhatsApp and email messages</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#7a0e1c}a:hover{color:#4d0811}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1040px; box-sizing: border-box; padding: 56px; background: #fffaf3; font-family: Poppins, 'Segoe UI', Arial, sans-serif; color: #2a1a1c; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 34px; line-height: 42px; font-weight: 800; color: #7a0e1c">The three messages</div>
+<div style="font-size: 16px; line-height: 24px; color: #5a4a45">The blast that starts it, then the WhatsApp and email that deliver the magazine after the form.</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; align-items: start">
+
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-size: 13px; letter-spacing: 0.14em; font-weight: 700; color: #8c1b2b">1 · THE BLAST (WHATSAPP)</div>
+<div style="background: #ece5dd; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 10px; min-height: 760px; box-sizing: border-box">
+<div style="background: #ffffff; border-radius: 12px; padding: 8px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 1px 1px rgba(0,0,0,0.08)">
+<img src="./assets/96f47ba47e61f66980f1c015be678010.jpg" alt="RISE cover" style="width: 100%; height: 300px; object-fit: cover; object-position: top; border-radius: 8px">
+<div style="font-size: 14px; line-height: 21px; padding: 0 6px 6px; white-space: pre-line">Navi Mumbai finally has its own business magazine.
+
+BNI RISE, Diwali Edition. 48 pages on what the new airport and the data centre boom mean for businesses here, plus stories from members who have passed ₹3,000 crore of referrals to each other.
+
+It's free. Get your copy:
+<span style="color: #1a5fb4; text-decoration: underline">[rise.yourdomain.in/?src=wa_blast]</span>
+
+Know one business owner who should read this? Forward it to them.</div>
+<div style="font-size: 11px; color: #667781; text-align: right; padding: 0 6px 4px">10:30 am</div>
+</div>
+<div style="font-size: 12px; line-height: 18px; color: #4a3a36; padding: 4px 6px">Tip for members: add one line on top in your own words before forwarding. A personal line gets opened. A plain forward gets skipped.</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-size: 13px; letter-spacing: 0.14em; font-weight: 700; color: #8c1b2b">2 · DELIVERY (WHATSAPP TEMPLATE)</div>
+<div style="background: #ece5dd; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 10px; min-height: 760px; box-sizing: border-box">
+<div style="align-self: flex-end; max-width: 80%; background: #d9fdd3; border-radius: 12px; padding: 8px 12px; font-size: 13px; line-height: 19px; color: #2a1a1c">Form submitted on the RISE page</div>
+<div style="background: #ffffff; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 1px 1px rgba(0,0,0,0.08)">
+<div style="padding: 8px 8px 0">
+<img src="./assets/96f47ba47e61f66980f1c015be678010.jpg" alt="RISE cover" style="width: 100%; height: 200px; object-fit: cover; object-position: top; border-radius: 8px">
+</div>
+<div style="font-size: 14px; line-height: 21px; padding: 10px 14px 4px; white-space: pre-line">Hi [First name], here's your copy of BNI RISE.
+
+Short on time? Start with page 11, Navi Mumbai's Moment.
+
+Reading about BNI is one thing. Seeing a meeting is another. Come as our guest, once, and judge for yourself.</div>
+<div style="font-size: 12px; color: #667781; padding: 2px 14px 10px">Reply STOP to opt out</div>
+<div style="border-top: 1px solid #e9edef; min-height: 44px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; font-weight: 600; color: #027eb5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#027eb5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>Download RISE</div>
+<div style="border-top: 1px solid #e9edef; min-height: 44px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; font-weight: 600; color: #027eb5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#027eb5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5h14v15H5zM5 10h14M9 3v4M15 3v4"></path></svg>Book a guest visit</div>
+</div>
+<div style="font-size: 12px; line-height: 18px; color: #4a3a36; padding: 4px 6px">[First name] is the template variable, filled from the form. Submit this to Meta as a template before launch. Both buttons are tracked links.</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-size: 13px; letter-spacing: 0.14em; font-weight: 700; color: #8c1b2b">3 · DELIVERY (EMAIL)</div>
+<div style="background: #ffffff; border: 1px solid #eadfce; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; min-height: 760px; box-sizing: border-box">
+<div style="padding: 14px 18px; border-bottom: 1px solid #eadfce; display: flex; flex-direction: column; gap: 4px; font-size: 13px; line-height: 19px; color: #4a3a36">
+<div><b style="color: #2a1a1c">From:</b> BNI Navi Mumbai &lt;[rise@yourdomain.in]&gt;</div>
+<div><b style="color: #2a1a1c">Subject:</b> Your copy of RISE is here</div>
+<div><b style="color: #2a1a1c">Preview:</b> Start with page 11. It's about your next customer.</div>
+</div>
+<div style="background: #5e0b15; padding: 20px; display: flex; justify-content: center">
+<img src="./assets/96f47ba47e61f66980f1c015be678010.jpg" alt="RISE cover" style="width: 150px; height: 212px; object-fit: cover; box-shadow: 0 12px 24px rgba(0,0,0,0.4)">
+</div>
+<div style="padding: 20px 22px; display: flex; flex-direction: column; gap: 12px; font-size: 14px; line-height: 22px">
+<div>Hi Rahul,</div>
+<div>Thanks for asking for RISE. Your copy is ready.</div>
+<div style="align-self: flex-start; min-height: 44px; display: inline-flex; align-items: center; padding: 0 22px; border-radius: 10px; background: #c8102e; color: #ffffff; font-weight: 700">Download RISE (PDF)</div>
+<div>Short on time? Page 11, Navi Mumbai's Moment, maps what the airport and the data centre belt will need from local businesses.</div>
+<div>One more thing. Come to a chapter meeting as our guest, once. <span style="color: #7a0e1c; text-decoration: underline; font-weight: 600">Book a visit</span></div>
+<div>Team RISE<br>BNI Navi Mumbai</div>
+</div>
+<div style="margin-top: auto; padding: 14px 22px; background: #fbf3e6; font-size: 11px; line-height: 17px; color: #5a4a45">You're getting this because you asked for RISE on [date]. <span style="text-decoration: underline">Unsubscribe</span></div>
+</div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1040}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>
