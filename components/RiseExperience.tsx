@@ -85,6 +85,19 @@ export default function RiseExperience({
     }
   }, [toast]);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("book") !== "visit") return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    requestAnimationFrame(() => {
+      formRef.current?.scrollIntoView({
+        behavior: reduce ? "instant" : "smooth",
+        block: "start",
+      });
+      formRef.current?.focus({ preventScroll: true });
+    });
+  }, []);
+
   function scrollToForm() {
     // Focus the card first so a phone's keyboard does not obscure the destination.
     formRef.current?.focus({ preventScroll: true });

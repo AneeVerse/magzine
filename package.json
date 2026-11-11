@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit",
     "test": "node --experimental-strip-types --conditions=react-server --test tests/*.test.ts",
     "whatsapp:check": "node --env-file-if-exists=.env.local scripts/check-whatsapp.mjs",
+    "whatsapp:test": "node --env-file-if-exists=.env.local --experimental-strip-types --conditions=react-server scripts/send-test-whatsapp.mjs",
     "email:check": "node --env-file-if-exists=.env.local scripts/check-email.mjs"
   },
   "type": "module",
@@ -22,6 +23,7 @@
     "lucide-react": "^1.62.0",
     "next": "^16.4.3",
     "nodemailer": "^10.3.1",
+    "pdf-lib": "^1.17.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "server-only": "^0.0.1"

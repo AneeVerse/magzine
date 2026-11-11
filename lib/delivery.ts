@@ -76,10 +76,9 @@ export async function deliverLead(lead: LeadRequest): Promise<DeliveryResult> {
     };
   }
 
-  if (mode === "webhook" || lead.action === "visit") {
+  if (mode === "webhook") {
     const endpoint = process.env.RISE_LEAD_WEBHOOK_URL;
     if (!endpoint || !endpoint.startsWith("https://")) {
-      // Visit/webhook without automation URL: still succeed if email/sheet worked.
       if (capture.email || capture.sheet) {
         return {
           preview: false,
@@ -123,6 +122,8 @@ export async function deliverLead(lead: LeadRequest): Promise<DeliveryResult> {
     }
   }
 
+  // Magazine + guest-visit forms both get the same DoubleTick template
+  // (Download RISE + Book a guest visit buttons on rise.nmbts.co.in).
   await sendWhatsApp(lead);
   return {
     preview: false,

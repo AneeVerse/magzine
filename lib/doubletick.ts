@@ -60,9 +60,15 @@ function templateData(env: Environment, lead: LeadRequest): TemplateData {
   const values: Record<string, string> = {
     firstName: lead.name.split(/\s+/)[0],
     fullName: lead.name,
-    magazineUrl: publicUrl(required(env, "RISE_MAGAZINE_URL")),
+    magazineUrl: env.RISE_MAGAZINE_URL
+      ? publicUrl(env.RISE_MAGAZINE_URL)
+      : "",
     visitUrl: env.RISE_VISIT_URL ? publicUrl(env.RISE_VISIT_URL) : "",
     coverUrl: env.RISE_COVER_URL ? publicUrl(env.RISE_COVER_URL) : "",
+    // Approved buttons are https://rise.bninavimumbai.in/{{1}}
+    // and https://rise.bninavimumbai.in/visit/{{1}}. Send only the ending.
+    downloadPath: (env.RISE_DOWNLOAD_PATH || "magazine").trim(),
+    visitPath: (env.RISE_VISIT_PATH || "guest").trim(),
   };
   function expand(value: unknown): string {
     if (typeof value !== "string") throw new DeliveryError("configuration");
@@ -176,14 +182,30 @@ export async function sendWhatsApp(
       throw new DeliveryError("permission");
     if (!response.ok) throw new DeliveryError("upstream");
     const result: unknown = await response.json();
+    const accepted = ["SENT", "ACCEPTED", "QUEUED", "ENQUEUED"];
+    const topStatus =
+      isRecord(result) && typeof result.status === "string"
+        ? result.status
+        : "";
+    const first =
+      isRecord(result) &&
+      Array.isArray(result.messages) &&
+      isRecord(result.messages[0])
+        ? result.messages[0]
+        : null;
+    const itemStatus = first && typeof first.status === "string" ? first.status : "";
     if (
       !isRecord(result) ||
       result.error ||
-      typeof result.status !== "string" ||
-      !["SENT", "ACCEPTED", "QUEUED"].includes(result.status)
+      (first && first.error) ||
+      (!accepted.includes(topStatus) && !accepted.includes(itemStatus))
     )
       throw new DeliveryError("upstream");
-    return { messageId: payload.messages[0].messageId };
+    return {
+      messageId:
+        (first && typeof first.messageId === "string" && first.messageId) ||
+        payload.messages[0].messageId,
+    };
   } catch (error) {
     if (error instanceof DeliveryError) throw error;
     throw new DeliveryError(

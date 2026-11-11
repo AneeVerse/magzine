@@ -3,7 +3,7 @@ import { VisitorTracker } from "@/components/VisitorTracker";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rise.bninavimumbai.in"),
+  metadataBase: new URL("https://rise.nmbts.co.in"),
   title:
     "BNI RISE | Navi Mumbai Business Magazine — 12th Anniversary Diwali Edition",
   description:
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "BNI RISE | The Business Story of Navi Mumbai",
     description:
       "48 pages of regional economic intelligence. Free copy delivered straight to your WhatsApp in 2 minutes.",
-    url: "https://rise.bninavimumbai.in",
+    url: "https://rise.nmbts.co.in",
     siteName: "BNI RISE Magazine",
     images: [
       {

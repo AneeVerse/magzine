@@ -116,3 +116,11 @@ test("does not expose provider permission errors or accept ambiguous responses",
   await assert.rejects(sendWhatsApp(lead, env, mock), DeliveryError);
 });
 
+test("accepts DoubleTick's per-message ENQUEUED response", async () => {
+  const mock: typeof fetch = async () =>
+    Response.json({
+      messages: [{ status: "ENQUEUED", recipient: "919876543210", messageId: "abc" }],
+    });
+  assert.equal((await sendWhatsApp(lead, env, mock)).messageId, "abc");
+});
+
