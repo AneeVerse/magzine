@@ -42,6 +42,66 @@ const statusLabel: Record<LeadRequest["status"], string> = {
   member: "BNI member",
 };
 
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function readerEmail(lead: LeadRequest): { subject: string; html: string; text: string } {
+  const firstName = escapeHtml(lead.name.trim().split(/\s+/)[0] || lead.name);
+  const magazineUrl =
+    process.env.RISE_MAGAZINE_URL || "https://rise.nmbts.co.in/magazine";
+  const safeUrl = escapeHtml(magazineUrl);
+
+  if (lead.action === "visit") {
+    return {
+      subject: "We received your RISE guest visit request",
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e8ddd3; border-radius: 8px; overflow: hidden;">
+          <div style="background: #6b1d2a; color: #fff; padding: 20px; text-align: center;">
+            <h1 style="margin: 0; font-size: 22px;">Guest visit request received</h1>
+          </div>
+          <div style="padding: 20px; background: #fffaf5; color: #2b211c;">
+            <p>Hello ${firstName},</p>
+            <p>Thanks for requesting a guest visit with BNI Navi Mumbai. The team will confirm the chapter, date and venue with you.</p>
+          </div>
+        </div>
+      `,
+      text: [
+        `Hello ${lead.name.trim().split(/\s+/)[0] || lead.name},`,
+        "Thanks for requesting a guest visit with BNI Navi Mumbai.",
+        "The team will confirm the chapter, date and venue with you.",
+      ].join("\n"),
+    };
+  }
+
+  return {
+    subject: "Your copy of RISE is ready",
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e8ddd3; border-radius: 8px; overflow: hidden;">
+        <div style="background: #6b1d2a; color: #fff; padding: 20px; text-align: center;">
+          <h1 style="margin: 0; font-size: 22px;">Your RISE copy</h1>
+        </div>
+        <div style="padding: 20px; background: #fffaf5; color: #2b211c;">
+          <p>Hello ${firstName},</p>
+          <p>Your copy of RISE, the BNI Navi Mumbai business magazine, is ready.</p>
+          <p><a href="${safeUrl}" style="color:#6b1d2a;">Read the magazine</a></p>
+          <p>You will also get it on WhatsApp.</p>
+        </div>
+      </div>
+    `,
+    text: [
+      `Hello ${lead.name.trim().split(/\s+/)[0] || lead.name},`,
+      "Your copy of RISE, the BNI Navi Mumbai business magazine, is ready.",
+      magazineUrl,
+      "You will also get it on WhatsApp.",
+    ].join("\n"),
+  };
+}
+
 export async function sendLeadEmail(lead: LeadRequest): Promise<boolean> {
   const { user, pass, receiver } = emailConfig();
   if (!user || !pass || !receiver) {
@@ -68,9 +128,14 @@ export async function sendLeadEmail(lead: LeadRequest): Promise<boolean> {
     .map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`)
     .join("");
 
+  const reader = readerEmail(lead);
+  const from = `"RISE Magazine — BNI Navi Mumbai" <${user}>`;
+  let teamSent = false;
+  let readerSent = false;
+
   try {
     await transporter.sendMail({
-      from: `"RISE Magazine — BNI Navi Mumbai" <${user}>`,
+      from,
       to: receiver,
       replyTo: lead.email,
       subject: `RISE lead · ${actionLabel} · ${lead.name}`,
@@ -115,12 +180,29 @@ export async function sendLeadEmail(lead: LeadRequest): Promise<boolean> {
         `Submitted: ${indianTime}`,
       ].join("\n"),
     });
-    return true;
+    teamSent = true;
   } catch (error) {
     console.error(
-      "[Email] Send failed:",
+      "[Email] Team send failed:",
       error instanceof Error ? error.message : error,
     );
-    return false;
   }
+
+  try {
+    await transporter.sendMail({
+      from,
+      to: lead.email,
+      subject: reader.subject,
+      html: reader.html,
+      text: reader.text,
+    });
+    readerSent = true;
+  } catch (error) {
+    console.error(
+      "[Email] Reader send failed:",
+      error instanceof Error ? error.message : error,
+    );
+  }
+
+  return teamSent || readerSent;
 }
