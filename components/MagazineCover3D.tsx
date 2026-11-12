@@ -15,7 +15,7 @@ export function MagazineCover3D({
       >
         <Image
           src="/assets/rise-cover.jpg"
-          alt="RISE Diwali edition featuring Pankaj J Harwansh"
+          alt="RISE magazine featuring Pankaj J Harwansh"
           width={910}
           height={1287}
           sizes="(max-width: 380px) 130px, (max-width: 700px) 160px, (max-width: 1000px) 120px, 160px"
@@ -34,8 +34,6 @@ export function MagazineCover3D({
         </h2>
         <p>
           People. Progress. Possibility.
-          <br />
-          The special Diwali edition.
         </p>
         <div className="edition-spec">
           <strong>48</strong>

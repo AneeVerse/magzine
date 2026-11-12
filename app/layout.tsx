@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://rise.nmbts.co.in"),
   title:
-    "BNI RISE | Navi Mumbai Business Magazine — 12th Anniversary Diwali Edition",
+    "BNI RISE | Navi Mumbai Business Magazine — 12th Anniversary Edition",
   description:
     "The business story of Navi Mumbai, told by the people building it. 48 pages on the new airport, data centre corridor, and ₹3,000+ Cr referral economy. Free WhatsApp delivery.",
   keywords: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: "/assets/rise-cover.jpg",
         width: 910,
         height: 1287,
-        alt: "BNI RISE 12th Anniversary Diwali Edition Cover",
+        alt: "BNI RISE 12th Anniversary Edition Cover",
       },
     ],
     locale: "en_IN",

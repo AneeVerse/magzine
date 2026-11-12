@@ -39,7 +39,7 @@ export function SpreadModal({
             <div className="preview-note">
               <strong>This is just the beginning.</strong>
               <p>
-                Get all 48 pages of the special Diwali edition, delivered free
+                Get all 48 pages of the 12th anniversary edition, delivered free
                 to your WhatsApp and email.
               </p>
             </div>

@@ -252,8 +252,7 @@ export default function RiseExperience({
                 <div className="hero-copy">
                   <div className="issue-label">
                     <span />
-                    DIWALI 2026<span className="issue-divider">/</span>12TH
-                    ANNIVERSARY EDITION
+                    12TH ANNIVERSARY EDITION
                   </div>
                   <h1>
                     A city on the rise.

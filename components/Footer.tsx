@@ -24,7 +24,7 @@ export function Footer({
           <span className="footer-edition">
             12TH ANNIVERSARY
             <br />
-            DIWALI EDITION 2026
+            EDITION
           </span>
         </div>
         <div className="footer-bottom">
