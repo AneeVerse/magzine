@@ -76,7 +76,7 @@ export function SpreadExplorer({
       <div className="container-custom">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">INSIDE THE DIWALI ISSUE</p>
+            <p className="eyebrow">INSIDE THE ISSUE</p>
             <h2>
               Local stories.
               <br />
