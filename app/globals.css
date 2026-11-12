@@ -1385,6 +1385,7 @@ form label small {
 .footer-bottom {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   gap: 30px;
   border-top: 1px solid #60414a66;
   padding-top: 20px;
@@ -1392,8 +1393,28 @@ form label small {
   font-size: 11px;
   line-height: 1.9;
 }
-.footer-bottom > p:last-child {
+.footer-bottom > p:nth-child(2) {
   text-align: right;
+}
+.footer-credit {
+  flex-shrink: 0;
+  white-space: nowrap;
+  text-align: right;
+}
+.footer-credit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #e3d1d5;
+  text-decoration: none;
+}
+.footer-credit-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.footer-credit-link img {
+  display: inline-block;
+  vertical-align: middle;
 }
 .footer-bottom button {
   color: #d6bcc4;
@@ -2584,8 +2605,13 @@ p {
     font-size: 13px;
     line-height: 1.8;
   }
-  .footer-bottom > p:last-child {
+  .footer-bottom > p:nth-child(2) {
     text-align: left;
+    margin-top: 15px;
+  }
+  .footer-credit {
+    text-align: left;
+    white-space: normal;
     margin-top: 15px;
   }
   .footer-bottom button {

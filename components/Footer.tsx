@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+
 export function Footer({
   isSubmitted = false,
   onOpenPrivacyModal,
@@ -39,7 +42,26 @@ export function Footer({
               ? "Changed your mind? Reply STOP to opt out."
               : "Your details are used for RISE and BNI Navi Mumbai updates."}
             <br />
-            <button onClick={onOpenPrivacyModal}>Privacy policy</button>
+            <button type="button" onClick={onOpenPrivacyModal}>
+              Privacy policy
+            </button>
+          </p>
+          <p className="footer-credit">
+            Designed &amp; Managed by{" "}
+            <Link
+              href="https://www.aneeverse.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-credit-link"
+            >
+              <span>Aneeverse</span>
+              <Image
+                src="/logo/aneeverse-logo.svg"
+                alt="Aneeverse Logo"
+                width={22}
+                height={22}
+              />
+            </Link>
           </p>
         </div>
       </div>
