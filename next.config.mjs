@@ -9,7 +9,7 @@ const nextConfig = {
           { key: "Content-Type", value: "application/pdf" },
           {
             key: "Content-Disposition",
-            value: 'attachment; filename="BNI-RISE-Magazine.pdf"',
+            value: 'attachment; filename="BNI-Navi-Mumbai-RISE-Magazine-2026.pdf"',
           },
           { key: "Cache-Control", value: "public, max-age=3600" },
         ],
